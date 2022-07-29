@@ -1,0 +1,45 @@
+﻿@model List<PruebaMeta.Models.Student>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de estudiantes</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-info" asp-action="student_detail" asp-controller="Home" asp-route-Id="0">Agregar estudiante</a>
+        <hr/>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Curso</th>
+                    <th>Estado</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nick</td>
+                        <td>@item.Birth</td>
+                        <td>@item.Grade</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="student_detail" asp-controller="Home" asp-route-Id="@item.Id">Editar</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Home" asp-route-Id="@item.Id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
